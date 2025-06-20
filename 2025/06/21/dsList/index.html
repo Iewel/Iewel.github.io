@@ -11,38 +11,34 @@
   <meta charset="utf-8">
 
   
-  <title>All Posts - Lewei</title>
+  <title>The C language implements linked lists</title>
   
-  <link rel="canonical" href="http://example.com/archives/2025/">
+  <link rel="canonical" href="http://example.com/2025/06/21/dsList/">
   
-  <meta name="description" content="">
+  <meta name="description" content="Here is a simple struct demo. #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt;  // 定义链表节点的结构体 typedef struct Node &amp;#123;     int data;              ">
   
   
   <meta name="author" content="Lewei">
   
   
-  <meta property="og:image" content="http://example.com/images/thumbnail.jpg">
-  
   
   <meta property="og:site_name" content="Lewei" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="All Posts - Lewei" />
+  <meta property="og:title" content="The C language implements linked lists" />
   
-  <meta property="og:description" content="">
+  <meta property="og:description" content="Here is a simple struct demo. #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt;  // 定义链表节点的结构体 typedef struct Node &amp;#123;     int data;              ">
   
-  <meta property="og:url" content="http://example.com/archives/2025/" />
+  <meta property="og:url" content="http://example.com/2025/06/21/dsList/" />
 
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="All Posts - Lewei">
+  <meta name="twitter:title" content="The C language implements linked lists">
   
-  <meta name="twitter:description" content="">
-  
-  
-  
-  <meta name="twitter:image" content="http://example.com/images/thumbnail.jpg">
+  <meta name="twitter:description" content="Here is a simple struct demo. #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt;  // 定义链表节点的结构体 typedef struct Node &amp;#123;     int data;              ">
   
   
-  <meta name="twitter:url" content="http://example.com/archives/2025/" />
+  
+  
+  <meta name="twitter:url" content="http://example.com/2025/06/21/dsList/" />
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -199,48 +195,66 @@
 </div>
 
         <div class="trans">
-          
-<h2>All Posts</h2>
+            <h2>The C language implements linked lists</h2>
+
+  <p>Here is a simple struct demo.</p>
+<pre><code class="highlight C"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span>
+<span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdlib.h&gt;</span></span>
+
+<span class="comment">// 定义链表节点的结构体</span>
+<span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span>
+    <span class="type">int</span> data;                <span class="comment">// 节点存储的数据，这里以int类型为例</span>
+    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span>* <span class="title">next</span>;</span>       <span class="comment">// 指向下一个节点的指针</span>
+&#125; Node;
+
+<span class="comment">// 创建新节点</span>
+Node* <span class="title function_">createNode</span><span class="params">(<span class="type">int</span> data)</span> &#123;
+    Node* newNode = (Node*)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(Node));
+    <span class="keyword">if</span> (newNode == <span class="literal">NULL</span>) &#123;
+        <span class="built_in">printf</span>(<span class="string">&quot;内存分配失败\n&quot;</span>);
+        <span class="built_in">exit</span>(<span class="number">1</span>);
+    &#125;
+    newNode-&gt;data = data;
+    newNode-&gt;next = <span class="literal">NULL</span>;    <span class="comment">// 新节点的next指针初始化为NULL</span>
+    <span class="keyword">return</span> newNode;
+&#125;
+
+<span class="type">int</span> <span class="title function_">main</span><span class="params">()</span> &#123;
+    <span class="comment">// 创建三个独立节点</span>
+    Node* head = createNode(<span class="number">1</span>);
+    Node* second = createNode(<span class="number">2</span>);
+    Node* third = createNode(<span class="number">3</span>);
+
+    <span class="comment">// 连接节点形成链表</span>
+    head-&gt;next = second;
+    second-&gt;next = third;
+
+    <span class="comment">// 遍历链表并输出数据</span>
+    Node* current = head;
+    <span class="keyword">while</span> (current != <span class="literal">NULL</span>) &#123;
+        <span class="built_in">printf</span>(<span class="string">&quot;%d &quot;</span>, current-&gt;data);
+        current = current-&gt;next;
+    &#125;
+    <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);
+
+    <span class="comment">// 释放链表内存</span>
+    current = head;
+    <span class="keyword">while</span> (current != <span class="literal">NULL</span>) &#123;
+        Node* temp = current;
+        current = current-&gt;next;
+        <span class="built_in">free</span>(temp);
+    &#125;
+
+    <span class="keyword">return</span> <span class="number">0</span>;
+&#125;</code></pre>
+<p>Here is a image test.</p>
 
 
-    <article>
-      <div class="row">
+<p><img src="/cLinkList.png" alt="图片引用方法二"></p>
+<p><img src="/images/cLinkList.png" alt="图片引用方法三"></p>
 
-        <div class="three columns left lit">
-          <p class="bottom">Jun 21, 2025</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2025/06/21/dsList/" class="">
-            
-              The C language implements linked lists
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-    <article>
-      <div class="row">
-
-        <div class="three columns left lit">
-          <p class="bottom">Jun 20, 2025</p>
-        </div>
-        <div class="nine columns left mb-3">
-          <a href="/2025/06/20/hello-world/" class="">
-            
-              Hello World
-            
-          </a>
-        </div>
-      </div>
-    </article>
-
-<div class="pagination-bar">
-  <ul class="pagination">
-    
-    
-  </ul>
-</div>
+  <p><a class="classtest-link" href="/tags/DataStruct-and-Algorithm/" rel="tag">DataStruct and Algorithm</a> — Jun 21, 2025</p>
+  
 
 
         </div>
