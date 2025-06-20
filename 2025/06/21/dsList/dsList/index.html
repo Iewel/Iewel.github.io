@@ -15,7 +15,7 @@
   
   <link rel="canonical" href="http://example.com/2025/06/21/dsList/dsList/">
   
-  <meta name="description" content="Here is a simple struct demo. #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt;  // 定义链表节点的结构体 typedef struct Node &amp;#123;     int data;              ">
+  <meta name="description" content="Here is a simple struct demo. #include  #include   // 定义链表节点的结构体 typedef struct Node &amp;#123;     int data;                // 节点存储的数据，这里以int类型为例     str">
   
   
   <meta name="author" content="Lewei">
@@ -26,14 +26,14 @@
   <meta property="og:type" content="article" />
   <meta property="og:title" content="The C language implements linked lists" />
   
-  <meta property="og:description" content="Here is a simple struct demo. #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt;  // 定义链表节点的结构体 typedef struct Node &amp;#123;     int data;              ">
+  <meta property="og:description" content="Here is a simple struct demo. #include  #include   // 定义链表节点的结构体 typedef struct Node &amp;#123;     int data;                // 节点存储的数据，这里以int类型为例     str">
   
   <meta property="og:url" content="http://example.com/2025/06/21/dsList/dsList/" />
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="The C language implements linked lists">
   
-  <meta name="twitter:description" content="Here is a simple struct demo. #include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt;  // 定义链表节点的结构体 typedef struct Node &amp;#123;     int data;              ">
+  <meta name="twitter:description" content="Here is a simple struct demo. #include  #include   // 定义链表节点的结构体 typedef struct Node &amp;#123;     int data;                // 节点存储的数据，这里以int类型为例     str">
   
   
   
@@ -130,7 +130,8 @@
 
   
 
-<meta name="generator" content="Hexo 7.3.0"></head>
+<meta name="generator" content="Hexo 7.3.0"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head>
 
 <body>
   <div class="container">
@@ -204,8 +205,8 @@
             <h2>The C language implements linked lists</h2>
 
   <p>Here is a simple struct demo.</p>
-<pre><code class="language-c">#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
+<pre class="line-numbers language-language-c"><code class="language-language-c">#include <stdio.h>
+#include <stdlib.h>
 
 // 定义链表节点的结构体
 typedef struct Node &#123;
@@ -217,11 +218,11 @@ typedef struct Node &#123;
 Node* createNode(int data) &#123;
     Node* newNode = (Node*)malloc(sizeof(Node));
     if (newNode == NULL) &#123;
-        printf(&quot;内存分配失败\n&quot;);
+        printf("内存分配失败\n");
         exit(1);
     &#125;
-    newNode-&gt;data = data;
-    newNode-&gt;next = NULL;    // 新节点的next指针初始化为NULL
+    newNode->data = data;
+    newNode->next = NULL;    // 新节点的next指针初始化为NULL
     return newNode;
 &#125;
 
@@ -232,28 +233,28 @@ int main() &#123;
     Node* third = createNode(3);
 
     // 连接节点形成链表
-    head-&gt;next = second;
-    second-&gt;next = third;
+    head->next = second;
+    second->next = third;
 
     // 遍历链表并输出数据
     Node* current = head;
     while (current != NULL) &#123;
-        printf(&quot;%d &quot;, current-&gt;data);
-        current = current-&gt;next;
+        printf("%d ", current->data);
+        current = current->next;
     &#125;
-    printf(&quot;\n&quot;);
+    printf("\n");
 
     // 释放链表内存
     current = head;
     while (current != NULL) &#123;
         Node* temp = current;
-        current = current-&gt;next;
+        current = current->next;
         free(temp);
     &#125;
 
     return 0;
 &#125;
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>Here is a image test.</p>
 <p>second one<br><img src="/images/cLinkList.png" alt="图片引用方法二"></p>
 <p>third one<br><img src="/images/cLinkList.png" alt="图片引用方法三"></p>
