@@ -141,9 +141,45 @@
     <div class="row">
       <div>
 
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+        <!-- 引入Prism.js CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.css">
+
+<!-- 引入Prism.js核心和行号插件 -->
 <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-c.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
+
+<!-- 动态加载语言组件并初始化 -->
+<script>
+  function loadPrismLanguage(lang) {
+    if (typeof Prism.languages[lang] === 'undefined') {
+      const script = document.createElement('script');
+      script.src = `https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-${lang}.min.js`;
+      script.onload = function() {
+        Prism.highlightAll();
+      };
+      document.head.appendChild(script);
+    }
+  }
+  
+  document.addEventListener('DOMContentLoaded', function() {
+    // 预加载常用语言
+    loadPrismLanguage('c');
+    loadPrismLanguage('cpp');
+    loadPrismLanguage('python');
+    loadPrismLanguage('java');
+    
+    // 动态加载其他可能的语言
+    const codeBlocks = document.querySelectorAll('pre[class*="language-"]');
+    codeBlocks.forEach(block => {
+      const lang = block.className.match(/language-(\w+)/)[1];
+      loadPrismLanguage(lang);
+    });
+    
+    Prism.highlightAll(); // 初始高亮
+  });
+</script>
+
 <div class="row">
   <div class="two columns" style="max-width: 50px">
     <h1 class="mt-2 mode">
